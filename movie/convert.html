@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>converter</title>
+<style>
+	body {
+		background-color: linen;
+	}
+
+	table {
+		width:80%;
+		margin:auto;
+	}
+
+	td.textarea {
+		width:45%;
+		text-align: center;
+	}
+
+	td.button {
+		width:10%;
+		text-align: center;
+	}
+</style>
+
+<script>
+	var KEYWORD_DATE='上映日期：';
+	var KEYWORD_DURATION='片　　長：';
+	var KEYWORD_COM='發行公司：';
+	var KEYWORD_IMDB='IMDb分數：';
+	var KEYWORD_DIRECTOR='導演：';
+	var KEYWORD_ACTOR='演員：';
+	var KEYWORD_OFFICALLINK='官方連結';
+
+	var CATAGORY_MAP = {
+		'動作' : ['Action Film'       , '001000076'],
+		'劇情' : ['Drama Film'        , '001000076'],
+		'戰爭' : ['War'               , '001000076'],
+		'科幻' : ['Science fiction'   , '001000076'],
+		'動畫' : ['Animation fiction' , '001000105'],
+		'喜劇' : ['Comedy Film'       , '001000095'],
+		'恐怖' : ['Terror'            , '001000076'],
+		'紀錄' : ['Documentary'       , '001000076'],
+		'音樂' : ['Music'             , '001000080'],
+		'微電' : ['Microcinema'       , '001000076'],
+		'愛情' : ['Romance Film'      , '001000076'],
+		'奇幻' : ['Fantasy Film'      , '001000076'],
+		'冒險' : ['Adventure Film'    , '001000076'],
+	}
+
+	function log(msg) {
+		document.getElementById("log").innerHTML += msg+'<br/>';
+	}
+
+	function doCovert() {
+		var index = 0;
+		var result = ""
+		var chinese_name = "";
+		var english_name = "";
+		var catas = [];
+		var director = [];
+		var actor =[];
+
+		var text = document.getElementById("from").value;
+		var text = text.replace('\r','');
+		var line = text.split('\n');
+
+		//name
+		chinese_name = line[index++];
+		english_name = line[index++];
+
+		//catagory
+		while ((index < line.length) && (!line[index].startsWith(KEYWORD_DATE))) {
+			log(line[index]);
+			if (!line[index].startsWith('\n') &&
+				!line[index].startsWith(' ') ){
+				catas.push(line[index]);
+			}
+			index++;
+		}
+
+
+		//go to director
+		while ((index < line.length) && (!line[index].startsWith(KEYWORD_DIRECTOR))) {
+			index++;
+		}
+
+		index++;
+		director = line[index].split(' 、 ');
+
+		//go to actor
+		while ((index < line.length) && (!line[index].startsWith(KEYWORD_ACTOR))) {
+			index++;
+		}
+
+		index++;
+		actor = line[index].split(' 、 ');
+
+		result += "ymedia:series_name="+english_name+"\n";
+		result += "ymedia:series_name="+chinese_name+"\n";
+		result += "yentities:topic="+chinese_name+"\n";
+
+		for (var i = 0 ; i < director.length ; i++) {
+			result += "yentities:director="+director[i].replace(/\(.+\)/gi, '')+"\n";
+		}
+
+		for (var i = 0 ; i < actor.length ; i++) {
+			result += "yentities:actor="+actor[i].replace(/\(.+\)/gi, '')+"\n";
+		}
+
+		for (var i = 0 ; i < catas.length ; i++) {
+			if (typeof CATAGORY_MAP[catas[i]] != undefined) {
+				result += "ysubcategory="+CATAGORY_MAP[catas[i]][0]+"\n";
+				result += "ysubcategory="+catas[i]+"類\n";
+				result += "yct:"+CATAGORY_MAP[catas[i]][1]+"\n";
+			}
+		}
+
+		document.getElementById("to").value = result;
+	}
+</script>
+
+</head>
+<body>
+<table>
+	<tr>
+		<td class="textarea">
+			<textarea rows="20" cols="60" id="from"></textarea>
+		</td>
+		<td class="button">
+			<button id="run" onclick="doCovert()">→</button>
+		</td>
+		<td class="textarea">
+			<textarea rows="20" cols="60" id="to"></textarea>
+		</td>
+	</tr>
+</table>
+
+<span id="log">debug log:<br/></span>
+
+</body>
+</html>
