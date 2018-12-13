@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>converter</title>
+<style>
+	body {
+		background-color: linen;
+	}
+
+	table {
+		width:80%;
+		margin:auto;
+	}
+
+	td.textarea {
+		width:45%;
+		text-align: center;
+		vertical-align: top;
+	}
+
+	td.button {
+		width:10%;
+		text-align: center;
+	}
+
+	input.outputText {
+		width:70%;
+	}
+	button.outputText {
+
+	}
+</style>
+
+<script>
+	var KEYWORD_DATE='上映日期：';
+	var KEYWORD_DURATION='片　　長：';
+	var KEYWORD_COM='發行公司：';
+	var KEYWORD_IMDB='IMDb分數：';
+	var KEYWORD_DIRECTOR='導演：';
+	var KEYWORD_ACTOR='演員：';
+	var KEYWORD_OFFICALLINK='官方連結';
+
+	var CATAGORY_MAP = {
+		'動作' : ['Action Film'       , '001000076'],
+		'劇情' : ['Drama Film'        , '001000076'],
+		'戰爭' : ['War'               , '001000076'],
+		'科幻' : ['Science fiction'   , '001000076'],
+		'動畫' : ['Animation fiction' , '001000105'],
+		'喜劇' : ['Comedy Film'       , '001000095'],
+		'恐怖' : ['Terror'            , '001000076'],
+		'紀錄' : ['Documentary'       , '001000076'],
+		'音樂' : ['Music'             , '001000080'],
+		'微電' : ['Microcinema'       , '001000076'],
+		'愛情' : ['Romance Film'      , '001000076'],
+		'奇幻' : ['Fantasy Film'      , '001000076'],
+		'冒險' : ['Adventure Film'    , '001000076'],
+	}
+
+	function log(msg) {
+		document.getElementById("log").innerHTML += msg+'<br/>';
+	}
+
+	function doCovert() {
+		var index = 0;
+		var result = [];
+		var chinese_name = "";
+		var english_name = "";
+		var catas = [];
+		var director = [];
+		var actor =[];
+
+		var text = document.getElementById("from").value;
+		var text = text.replace('\r','');
+		var line = text.split('\n');
+
+		//name
+		log("get name...");
+		chinese_name = line[index++];
+		english_name = line[index++];
+		log(chinese_name);
+		log(english_name);
+
+		//catagory
+		log("get catagory...");
+		while ((index < line.length) && (!line[index].startsWith(KEYWORD_DATE))) {
+			if (!line[index].startsWith('\n') &&
+				!line[index].startsWith(' ') ){
+				catas.push(line[index]);
+				log(line[index]);
+			}
+			index++;
+		}
+
+
+		//go to director
+		log("get director...");
+		while ((index < line.length) && (!line[index].startsWith(KEYWORD_DIRECTOR))) {
+			index++;
+		}
+
+		index++;
+		if ((typeof line[index] != undefined ) && (line[index] != undefined)) {
+			log(line[index])
+			director = line[index].split(' 、 ');
+		} else {
+			log("director")
+		}
+
+		//go to actor
+		log("get actor...");
+		while ((index < line.length) && (!line[index].startsWith(KEYWORD_ACTOR))) {
+			index++;
+		}
+
+		index++;
+		if ((typeof line[index] != undefined ) && (line[index] != undefined)) {
+			log(line[index]);
+			actor = line[index].split(' 、 ');
+		} else {
+			log("no actor")
+		}
+
+		log("start output");
+		result.push("ymedia:series_name="+english_name);
+		result.push("ymedia:series_name="+chinese_name);
+		result.push("yentities:topic="+chinese_name);
+
+		for (var i = 0 ; i < director.length ; i++) {
+			result.push("yentities:director="+director[i].replace(/\(.+\)/gi, ''));
+		}
+
+		for (var i = 0 ; i < actor.length ; i++) {
+			result.push("yentities:actor="+actor[i].replace(/\(.+\)/gi, ''));
+		}
+
+		for (var i = 0 ; i < catas.length ; i++) {
+			if (typeof CATAGORY_MAP[catas[i]] != undefined) {
+				result.push("ysubcategory="+CATAGORY_MAP[catas[i]][0]);
+				result.push("ysubcategory="+catas[i]+"類");
+				result.push("yct:"+CATAGORY_MAP[catas[i]][1]);
+			}
+		}
+		document.getElementById("to").innerHTML = "";
+		for (var i = 0 ; i < result.length ; i++) {
+			var out = '';
+			out += '<div class = outline>'
+			out += '<input class="outputText" type="text" value="'+result[i]+'" id="line'+i+'">';
+			out += '<button class="outputText" onclick="doCopy('+i+')">Copy</button>';
+			out += '</div>';
+			document.getElementById("to").innerHTML += out;
+		}
+	}
+
+	function doCopy(id) {
+		var copyID = "line"+id;
+		var copyText = document.getElementById(copyID);
+		copyText.select();
+		document.execCommand("copy");
+		//log("copy "+copyText.value);
+	}
+</script>
+
+</head>
+<body>
+<table>
+	<tr>
+		<td class="textarea">
+			<textarea rows="20" cols="60" id="from"></textarea>
+		</td>
+		<td class="button">
+			<button id="run" onclick="doCovert()">→</button>
+		</td>
+		<td class="output">
+			<div rows="20" cols="60" id="to"></div>
+		</td>
+	</tr>
+</table>
+
+<span id="log">debug log:<br/></span>
+
+</body>
+</html>
