@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三重縣五天四夜自駕深度遊 | 修正同步版</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: #fdfbf7; color: #333; }
+       .chart-container { position: relative; width: 100%; max-width: 700px; margin: auto; height: 30vh; min-height: 250px; }
+       .tab-active { border-bottom: 4px solid #8b0000; color: #8b0000; font-weight: 700; }
+       .timeline-dot { width: 16px; height: 16px; background-color: #8b0000; border-radius: 50%; position: absolute; left: -8px; top: 24px; border: 3px solid #fdfbf7; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-[#8b0000] text-white py-12 px-6 shadow-md relative overflow-hidden">
+        <div class="max-w-6xl mx-auto relative z-10">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4 tracking-wide">三重縣深度自駕 (修正版)</h1>
+            <p class="text-xl md:text-2xl font-light opacity-90 mb-6">已排除鈴鹿賽道休業日期，行程與報告完全同步</p>
+            <div class="flex flex-wrap gap-4 text-sm md:text-base bg-white/10 p-4 rounded-lg border border-white/20">
+                <span>✈️ 去程：6/16 IT206</span>
+                <span class="opacity-50">|</span>
+                <span>✈️ 回程：6/20 IT207</span>
+                <span class="opacity-50">|</span>
+                <span>🏎️ 鈴鹿開放日：6/19 恢復營運</span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <ul class="flex space-x-6 overflow-x-auto py-4 text-sm font-medium text-gray-600 whitespace-nowrap">
+                <li><a href="#overview" class="hover:text-[#8b0000]">策略</a></li>
+                <li><a href="#itinerary" class="text-[#8b0000] font-bold">每日行程</a></li>
+                <li><a href="#accommodation" class="hover:text-[#8b0000]">住宿</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 py-12 space-y-16">
+        
+        <section id="overview">
+            <h2 class="text-2xl font-bold border-l-4 border-[#8b0000] pl-4 mb-6">更新規劃邏輯</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div>
+                    <h3 class="font-bold text-[#8b0000] mb-2">⚠️ 關鍵限制修正</h3>
+                    <p class="text-gray-600 text-sm">鈴鹿賽道於 6/16-6/18 休業。本行程已將賽道調整至 6/19（週五）恢復營運首日，避開了休業期與週末人潮。</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-[#4a90e2] mb-2">📍 貓神社物流優化</h3>
+                    <p class="text-gray-600 text-sm">將玉野御嶽神社安排在第一天抵達後直接前往，利用其位於愛知縣的地理優勢，避免後續重複跨縣往返。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="itinerary">
+            <div class="flex overflow-x-auto border-b border-gray-200 mb-8" id="day-tabs"></div>
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                <div class="mb-6 pb-4 border-b border-gray-100">
+                    <h3 id="daily-title" class="text-2xl font-bold text-[#8b0000]">載入中...</h3>
+                    <p id="daily-subtitle" class="text-gray-500 mt-1"></p>
+                </div>
+                <div class="relative border-l-2 border-[#e2dcd0] ml-3" id="timeline-container"></div>
+            </div>
+        </section>
+
+        <section>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl border border-gray-100">
+                    <h3 class="text-center font-bold mb-4">每日行車距離預估 (km)</h3>
+                    <div class="chart-container"><canvas id="distanceChart"></canvas></div>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-100">
+                    <h3 class="text-center font-bold mb-4">時間分配百分比</h3>
+                    <div class="chart-container"><canvas id="timeAllocationChart"></canvas></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="accommodation">
+            <h2 class="text-2xl font-bold border-l-4 border-[#8b0000] pl-4 mb-6">住宿安排一覽</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-gray-200">
+                    <div class="text-xs font-bold text-blue-600 mb-2">D1</div>
+                    <h4 class="font-bold">東橫INN 近鐵四日市</h4>
+                    <p class="text-sm text-gray-500 mt-2">商務基礎，交通便利</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border-2 border-[#8b0000]/20 shadow-md">
+                    <div class="text-xs font-bold text-red-600 mb-2">D2-D3 (可選)</div>
+                    <h4 class="font-bold">鳥羽國際飯店/戶田家</h4>
+                    <p class="text-sm text-gray-500 mt-2">不可錯過的珍珠溫泉體驗</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200">
+                    <div class="text-xs font-bold text-gray-600 mb-2">D4</div>
+                    <h4 class="font-bold">東橫INN 中部國際機場</h4>
+                    <p class="text-sm text-gray-500 mt-2">方便隔日搭乘 IT207</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const itineraryData =, dist: 105
+            },
+            {
+                day: 2, date: "6/17 (三)", title: "伊勢神宮深度參拜", subtitle: "避開鈴鹿休業，全心投入日本人的心靈故鄉。",
+                events: [
+                    { time: "10:00", title: "外宮參拜", desc: "祈求衣食住平安。", icon: "⛩️" },
+                    { time: "12:00", title: "托福橫丁", desc: "品嚐伊勢烏龍麵、赤福冰、尋找貓石像。", icon: "🍡" },
+                    { time: "14:30", title: "內宮參拜", desc: "宇治橋、五十鈴川、神域散策。", icon: "⛩️" }
+                ], dist: 80
+            },
+            {
+                day: 3, date: "6/18 (四)", title: "鳥羽海洋美學與溫泉", subtitle: "雨天首選室內行程，入住海景溫泉飯店。",
+                events: [
+                    { time: "10:00", title: "鳥羽水族館", desc: "看儒艮與海象表演。", icon: "🐠" },
+                    { time: "15:00", title: "溫泉旅館 Check-in", desc: "體驗潮路亭珍珠溫泉或戶田家溫泉村。", icon: "♨️" }
+                ], dist: 30
+            },
+            {
+                day: 4, date: "6/19 (五)", title: "鈴鹿賽道熱血開園", subtitle: "今日復業！全日暢玩賽車主題設施。",
+                events: [
+                    { time: "10:00", title: "鈴鹿賽道 Motopia", desc: "鈴鹿賽道恢復營運首日。體驗賽道挑戰者。", icon: "🏎️" },
+                    { time: "19:00", title: "機場島入住", desc: "返回常滑，入住機場東橫INN。", icon: "🏨" }
+                ], dist: 130
+            },
+            {
+                day: 5, date: "6/20 (六)", title: "常滑購物與賦歸", subtitle: "搭機前最後採買，回程 IT207。",
+                events:, dist: 10
+            }
+        ];
+
+        let currentDay = 1;
+
+        function renderDay(day) {
+            const data = itineraryData.find(d => d.day === day);
+            document.getElementById('daily-title').innerText = data.title;
+            document.getElementById('daily-subtitle').innerText = data.subtitle;
+            const container = document.getElementById('timeline-container');
+            container.innerHTML = '';
+            data.events.forEach((ev, idx) => {
+                container.insertAdjacentHTML('beforeend', `
+                    <div class="relative pl-8 pb-8">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white border p-4 rounded-lg shadow-sm">
+                            <span class="font-bold text-[#8b0000]">${ev.time}</span>
+                            <h4 class="font-bold text-gray-800">${ev.icon} ${ev.title}</h4>
+                            <p class="text-sm text-gray-600 mt-1">${ev.desc}</p>
+                        </div>
+                    </div>
+                `);
+            });
+        }
+
+        function init() {
+            const tabs = document.getElementById('day-tabs');
+            itineraryData.forEach(d => {
+                const btn = document.createElement('button');
+                btn.className = `px-6 py-3 font-medium whitespace-nowrap transition-colors border-b-4 border-transparent text-gray-500 hover:text-gray-800 focus:outline-none`;
+                btn.innerText = `Day ${d.day}`;
+                if(d.day === 1) btn.classList.add('tab-active');
+                btn.onclick = () => {
+                    document.querySelectorAll('#day-tabs button').forEach(b => b.classList.remove('tab-active'));
+                    btn.classList.add('tab-active');
+                    renderDay(d.day);
+                };
+                tabs.appendChild(btn);
+            });
+            renderDay(1);
+            
+            new Chart(document.getElementById('distanceChart'), {
+                type: 'bar',
+                data: {
+                    labels:,
+                    datasets:
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+            });
+            new Chart(document.getElementById('timeAllocationChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['景點', '駕駛', '休閒'],
+                    datasets: [{ data: , backgroundColor: ['#8b0000', '#4a90e2', '#e2dcd0'] }]
+                },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
