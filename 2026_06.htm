@@ -11,7 +11,7 @@
         .chart-container { position: relative; width: 100%; height: 280px; }
         .timeline-line::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: #e2dcd0; }
         .scroll-hide::-webkit-scrollbar { display: none; }
-        .tab-btn { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid #e2dcd0; background: white; padding: 0.6rem 1.2rem; border-radius: 9999px; font-weight: bold; color: #6b7280; display: flex; align-items: center; gap: 0.5rem; }
+        .tab-btn { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid #e2dcd0; background: white; padding: 0.6rem 1.2rem; border-radius: 9999px; font-weight: bold; color: #6b7280; display: flex; align-items: center; gap: 0.4rem; }
         .tab-btn.active { background-color: #8b0000; color: white; border-color: #8b0000; transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(139, 0, 0, 0.3); }
         .day-content { display: none; animation: fadeIn 0.4s ease-out; }
         .day-content.active { display: block; }
@@ -26,13 +26,13 @@
         <div class="absolute top-0 right-0 p-8 opacity-10 text-9xl font-bold">三重</div>
         <div class="max-w-5xl mx-auto relative z-10">
             <div class="flex items-center gap-3 mb-4">
-                <span class="bg-white/20 px-3 py-1 rounded text-xs font-bold uppercase tracking-widest">Road Trip 2026</span>
-                <span class="bg-yellow-500 text-black px-3 py-1 rounded text-xs font-bold uppercase tracking-widest">Self-Drive</span>
+                <span class="bg-white/20 px-3 py-1 rounded text-xs font-bold uppercase tracking-widest">2026 Road Trip</span>
+                <span class="bg-yellow-500 text-black px-3 py-1 rounded text-xs font-bold uppercase tracking-widest">Tuesday Start</span>
             </div>
             <h1 class="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
                 三重縣深度遊 <span class="text-3xl">🏎️⛩️🦞</span>
             </h1>
-            <p class="text-xl opacity-90 font-light">6/16 <span class="font-bold">IT206</span> ✈️ 6/20 <span class="font-bold">IT207</span> | 包含鈴鹿賽道 & 伊勢神宮</p>
+            <p class="text-xl opacity-90 font-light">6/16 (二) <span class="font-bold">IT206</span> ✈️ 6/20 (六) <span class="font-bold">IT207</span> | 鈴鹿賽道 6/19 更新版</p>
         </div>
     </header>
 
@@ -53,18 +53,18 @@
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-lg transition group">
                     <div class="text-3xl mb-4 group-hover:scale-110 transition">🚗</div>
-                    <h4 class="font-bold text-lg mb-2">自駕導航</h4>
-                    <p class="text-sm text-gray-500 leading-relaxed">機場取車，貫穿三重。從北部的 <span class="font-bold">春日井</span> 參拜後，沿著東名阪道一路向南直達 <span class="font-bold">伊勢志摩</span>。</p>
+                    <h4 class="font-bold text-lg mb-2">自駕動線</h4>
+                    <p class="text-sm text-gray-500 leading-relaxed">從 <span class="font-bold">機場島</span> 出發，首站北上春日井，隨後一路南下三重核心地帶，環狀收尾。</p>
                 </div>
                 <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-lg transition group">
                     <div class="text-3xl mb-4 group-hover:scale-110 transition">🏁</div>
-                    <h4 class="font-bold text-lg mb-2">賽道更新</h4>
-                    <p class="text-sm text-gray-500 leading-relaxed">應要求調整：<span class="font-bold">鈴鹿賽道</span> 設定於 6/19 (三)，平日遊樂設施排隊更少，結束後直達機場島入住。</p>
+                    <h4 class="font-bold text-lg mb-2">賽道首選</h4>
+                    <p class="text-sm text-gray-500 leading-relaxed"><span class="font-bold">鈴鹿賽道</span> 已調整至 6/19 (五)，避開週末人潮，享受更高品質的駕駛體驗。</p>
                 </div>
                 <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-lg transition group">
-                    <div class="text-3xl mb-4 group-hover:scale-110 transition">🛁</div>
-                    <h4 class="font-bold text-lg mb-2">極致放鬆</h4>
-                    <p class="text-sm text-gray-500 leading-relaxed">在 D3 安排入住鳥羽溫泉。面對 <span class="font-bold">伊勢灣</span> 泡湯，享用龍蝦與和牛，這是旅程的高潮。</p>
+                    <div class="text-3xl mb-4 group-hover:scale-110 transition">🏮</div>
+                    <h4 class="font-bold text-lg mb-2">平日參拜</h4>
+                    <p class="text-sm text-gray-500 leading-relaxed">將 <span class="font-bold">伊勢神宮</span> 安排在 6/17 (三)，能享受更靜謐的森林參道，遠離旅遊團蜂擁。</p>
                 </div>
             </div>
         </section>
@@ -73,104 +73,100 @@
         <section id="daily" class="scroll-mt-28">
             <div class="flex items-center justify-between mb-8">
                 <h2 class="text-3xl font-bold">行程明細 📅</h2>
-                <div class="text-xs text-gray-400 font-bold uppercase tracking-widest bg-gray-100 px-3 py-1 rounded">Interactive Timeline</div>
+                <div class="text-xs text-gray-400 font-bold uppercase tracking-widest bg-gray-100 px-3 py-1 rounded">Timeline Dashboard</div>
             </div>
             
-            <!-- Day Tabs with Emojis -->
+            <!-- Day Tabs with Correct Days of the Week -->
             <div class="flex space-x-3 mb-10 overflow-x-auto scroll-hide pb-4">
-                <button onclick="switchDay(0)" class="tab-btn active" id="btn-0"><span>D1</span> ✈️ 6/16</button>
-                <button onclick="switchDay(1)" class="tab-btn" id="btn-1"><span>D2</span> ⛩️ 6/17</button>
-                <button onclick="switchDay(2)" class="tab-btn" id="btn-2"><span>D3</span> 🐚 6/18</button>
-                <button onclick="switchDay(3)" class="tab-btn" id="btn-3"><span>D4</span> 🏎️ 6/19</button>
-                <button onclick="switchDay(4)" class="tab-btn" id="btn-4"><span>D5</span> 🏠 6/20</button>
+                <button onclick="switchDay(0)" class="tab-btn active" id="btn-0"><span>D1</span> ✈️ 6/16(二)</button>
+                <button onclick="switchDay(1)" class="tab-btn" id="btn-1"><span>D2</span> ⛩️ 6/17(三)</button>
+                <button onclick="switchDay(2)" class="tab-btn" id="btn-2"><span>D3</span> 🐚 6/18(四)</button>
+                <button onclick="switchDay(3)" class="tab-btn" id="btn-3"><span>D4</span> 🏎️ 6/19(五)</button>
+                <button onclick="switchDay(4)" class="tab-btn" id="btn-4"><span>D5</span> 🏠 6/20(六)</button>
             </div>
 
             <!-- Content Area -->
             <div class="bg-white rounded-[2rem] shadow-xl p-8 md:p-12 border border-gray-100 relative overflow-hidden">
                 <div class="absolute -top-10 -right-10 text-[15rem] opacity-[0.03] font-bold select-none pointer-events-none" id="bg-day-num">D1</div>
 
-                <!-- Day 1: Arrival & Shrine -->
+                <!-- Day 1: Tuesday -->
                 <div id="day-0" class="day-content active">
                     <div class="mb-10">
-                        <span class="emoji-badge">⛩️ 首日參拜</span>
-                        <h3 class="text-3xl font-bold text-gray-800 mt-3">機場取車 ➔ 玉野御嶽神社 ➔ 四日市</h3>
-                        <p class="text-gray-500 mt-2 text-lg">開展您的三重之旅。首站前往春日井市參拜，避開市中心交通。</p>
+                        <span class="emoji-badge">⛩️ 首站祈福</span>
+                        <h3 class="text-3xl font-bold text-gray-800 mt-3">抵達 ➔ 玉野御嶽神社 ➔ 四日市</h3>
+                        <p class="text-gray-500 mt-2 text-lg">6/16 (二) | 首日取車後北上，探訪您指定的能量景點。</p>
                     </div>
                     <div class="relative timeline-line ml-4 space-y-12">
                         <div class="relative pl-12"><div class="absolute left-[-2px] top-1 w-5 h-5 rounded-full bg-[#8b0000] border-4 border-white shadow-md"></div>
-                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">13:05</span><h5 class="font-bold text-xl flex items-center gap-2">🛬 抵達中部國際機場 (NGO)</h5><p class="text-gray-500 mt-2">辦理入境，至機場租車中心 (Access Plaza) 領取您的座車。</p></div>
+                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">13:05</span><h5 class="font-bold text-xl flex items-center gap-2">🛬 抵達中部機場 (IT206)</h5><p class="text-gray-500 mt-2">機場租車中心取車，建議先熟悉右駕手感。</p></div>
                         <div class="relative pl-12"><div class="absolute left-[-2px] top-1 w-5 h-5 rounded-full bg-[#8b0000] border-4 border-white shadow-md"></div>
-                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">15:30</span><h5 class="font-bold text-xl flex items-center gap-2">⛩️ 玉野御嶽神社 (春日井)</h5><p class="text-gray-500 mt-2">您指定的秘境景點。林間神社氣氛肅穆，洗滌長途飛行的疲憊。</p></div>
+                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">15:45</span><h5 class="font-bold text-xl flex items-center gap-2">⛩️ 玉野御嶽神社 (春日井)</h5><p class="text-gray-500 mt-2">位於林間的小眾神社。6 月份的綠意盎然，非常適合拍照參拜。</p></div>
                         <div class="relative pl-12"><div class="absolute left-[-2px] top-1 w-5 h-5 rounded-full bg-[#8b0000] border-4 border-white shadow-md"></div>
-                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">19:00</span><h5 class="font-bold text-xl flex items-center gap-2">🏨 入住四日市東橫INN</h5><p class="text-gray-500 mt-2">近鐵四日市北口。晚餐推薦名產：厚切豬排 (四日市トンテキ)。</p></div>
+                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">19:00</span><h5 class="font-bold text-xl flex items-center gap-2">🏨 入住四日市東橫INN</h5><p class="text-gray-500 mt-2">晚餐推薦：站前「トンテキ」大入屋，品嚐厚切四日市豬排。</p></div>
                     </div>
                 </div>
 
-                <!-- Day 2: Ise Jingu -->
+                <!-- Day 2: Wednesday -->
                 <div id="day-1" class="day-content">
                     <div class="mb-10">
-                        <span class="emoji-badge">🙏 心靈之旅</span>
-                        <h3 class="text-3xl font-bold text-gray-800 mt-3">伊勢神宮平日巡禮 ⛩️</h3>
-                        <p class="text-gray-500 mt-2 text-lg">週一參拜能避開大批觀光團。感受日本最高地位神宮的靜謐與神聖。</p>
+                        <span class="emoji-badge">🙏 神聖領域</span>
+                        <h3 class="text-3xl font-bold text-gray-800 mt-3">伊勢神宮巡禮 ⛩️</h3>
+                        <p class="text-gray-500 mt-2 text-lg">6/17 (三) | 週中參拜，避開週末與國定假日的人擠人。</p>
                     </div>
                     <div class="relative timeline-line ml-4 space-y-12">
                         <div class="relative pl-12"><div class="absolute left-[-2px] top-1 w-5 h-5 rounded-full bg-[#8b0000] border-4 border-white shadow-md"></div>
-                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">10:00</span><h5 class="font-bold text-xl flex items-center gap-2">⛩️ 伊勢神宮 【外宮】</h5><p class="text-gray-500 mt-2">正式參拜先由外宮開始，隨後駕車 10 分鐘前往內宮。</p></div>
+                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">10:00</span><h5 class="font-bold text-xl flex items-center gap-2">⛩️ 伊勢神宮 【外宮】</h5><p class="text-gray-500 mt-2">依序參拜外宮與內宮，沿途古木參天。</p></div>
                         <div class="relative pl-12"><div class="absolute left-[-2px] top-1 w-5 h-5 rounded-full bg-[#8b0000] border-4 border-white shadow-md"></div>
-                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">12:30</span><h5 class="font-bold text-xl flex items-center gap-2">🍡 托福橫丁 (おかげ横丁)</h5><p class="text-gray-500 mt-2">在熱鬧老街享用伊勢烏龍麵。千萬別錯過赤福餅本店！</p></div>
+                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">12:30</span><h5 class="font-bold text-xl flex items-center gap-2">🍚 托福橫丁午餐</h5><p class="text-gray-500 mt-2">大啖伊勢龍蝦、松阪牛握壽司，並享用赤福冰。</p></div>
                         <div class="relative pl-12"><div class="absolute left-[-2px] top-1 w-5 h-5 rounded-full bg-[#8b0000] border-4 border-white shadow-md"></div>
-                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">14:30</span><h5 class="font-bold text-xl flex items-center gap-2">⛩️ 伊勢神宮 【內宮】</h5><p class="text-gray-500 mt-2">跨越宇治橋進入天照大神聖域，享受林間的神聖氣氛。</p></div>
+                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">15:00</span><h5 class="font-bold text-xl flex items-center gap-2">⛩️ 伊勢神宮 【內宮】</h5><p class="text-gray-500 mt-2">走過宇治橋，洗滌心靈。今晚續住四日市。</p></div>
                     </div>
                 </div>
 
-                <!-- Day 3: Toba -->
+                <!-- Day 3: Thursday -->
                 <div id="day-2" class="day-content">
                     <div class="mb-10">
-                        <span class="emoji-badge">🦦 海洋休閒</span>
-                        <h3 class="text-3xl font-bold text-gray-800 mt-3">鳥羽水族館 ➔ 海濱溫泉泊 🐚</h3>
-                        <p class="text-gray-500 mt-2 text-lg">全日飼養種類日本第一。隨後入住溫泉飯店享用美味的海味盛宴。</p>
+                        <span class="emoji-badge">🦦 生物世界</span>
+                        <h3 class="text-3xl font-bold text-gray-800 mt-3">鳥羽水族館 ➔ 溫泉之夜 🐚</h3>
+                        <p class="text-gray-500 mt-2 text-lg">6/18 (四) | 深入志摩半島。享受海洋奇觀與頂級溫泉住宿。</p>
                     </div>
                     <div class="relative timeline-line ml-4 space-y-12">
                         <div class="relative pl-12"><div class="absolute left-[-2px] top-1 w-5 h-5 rounded-full bg-[#8b0000] border-4 border-white shadow-md"></div>
-                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">10:00</span><h5 class="font-bold text-xl flex items-center gap-2">🦦 鳥羽水族館</h5><p class="text-gray-500 mt-2">必看世界級保育類儒艮 (Dugong) 與可愛的海獺餵食秀。</p></div>
+                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">10:00</span><h5 class="font-bold text-xl flex items-center gap-2">🦦 鳥羽水族館</h5><p class="text-gray-500 mt-2">觀賞日本唯一的儒艮。海獺與水豚表演也非常療癒。</p></div>
                         <div class="relative pl-12"><div class="absolute left-[-2px] top-1 w-5 h-5 rounded-full bg-[#8b0000] border-4 border-white shadow-md"></div>
-                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">15:30</span><h5 class="font-bold text-xl flex items-center gap-2">🦪 珍珠島 or 海女小屋</h5><p class="text-gray-500 mt-2">看海女潛水表演。隨後前往旅館辦理 Check-in。</p></div>
-                        <div class="relative pl-12"><div class="absolute left-[-2px] top-1 w-5 h-5 rounded-full bg-[#8b0000] border-4 border-white shadow-md"></div>
-                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">18:00</span><h5 class="font-bold text-xl flex items-center gap-2">♨️ 入住鳥羽溫泉 (例:戶田家)</h5><p class="text-gray-500 mt-2">放鬆筋骨。享受這趟旅行最奢華的一晚：海鮮會席晚餐。</p></div>
+                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">17:30</span><h5 class="font-bold text-xl flex items-center gap-2">♨️ 入住鳥羽溫泉飯店</h5><p class="text-gray-500 mt-2">推薦：戶田家。換上浴衣，享用充滿當地海產的會席料理。</p></div>
                     </div>
                 </div>
 
-                <!-- Day 4: Suzuka (Updated) -->
+                <!-- Day 4: Friday (Updated Suzuka) -->
                 <div id="day-3" class="day-content">
                     <div class="mb-10">
-                        <span class="emoji-badge">🏎️ 極速熱血</span>
-                        <h3 class="text-3xl font-bold text-gray-800 mt-3">鈴鹿賽道全日 ➔ 機場島 🏁</h3>
-                        <p class="text-gray-500 mt-2 text-lg">更新後的重點行程。全日暢遊 Motopia 樂園。回程入住機場島，明日無壓力。</p>
+                        <span class="emoji-badge">🏎️ 極速快感</span>
+                        <h3 class="text-3xl font-bold text-gray-800 mt-3">鈴鹿賽道 ➔ 機場島入住 🏁</h3>
+                        <p class="text-gray-500 mt-2 text-lg">6/19 (五) | 更新：這天安排賽道！平日玩遊樂設施超快速。</p>
                     </div>
                     <div class="relative timeline-line ml-4 space-y-12">
                         <div class="relative pl-12"><div class="absolute left-[-2px] top-1 w-5 h-5 rounded-full bg-[#8b0000] border-4 border-white shadow-md"></div>
-                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">10:00</span><h5 class="font-bold text-xl flex items-center gap-2">🏎️ 鈴鹿賽道 Motopia 樂園</h5><p class="text-gray-500 mt-2">體驗專業感十足的自駕設施，購買限量 F1 賽車紀念品。</p></div>
+                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">10:00</span><h5 class="font-bold text-xl flex items-center gap-2">🏎️ 鈴鹿賽道樂園</h5><p class="text-gray-500 mt-2">包含多樣化的自駕設施。別忘了逛逛賽道商店購買限定 F1 毛巾。</p></div>
                         <div class="relative pl-12"><div class="absolute left-[-2px] top-1 w-5 h-5 rounded-full bg-[#8b0000] border-4 border-white shadow-md"></div>
-                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">16:30</span><h5 class="font-bold text-xl flex items-center gap-2">🚗 經伊勢灣岸道回歸常滑</h5><p class="text-gray-500 mt-2">沿途欣賞壯麗海景與大橋景觀，行車約 1.5 小時。</p></div>
+                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">17:00</span><h5 class="font-bold text-xl flex items-center gap-2">🛍️ 常滑 AEON Mall</h5><p class="text-gray-500 mt-2">結束賽道後跨海回到機場島對岸。進行大採購與享用最後晚餐。</p></div>
                         <div class="relative pl-12"><div class="absolute left-[-2px] top-1 w-5 h-5 rounded-full bg-[#8b0000] border-4 border-white shadow-md"></div>
-                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">19:00</span><h5 class="font-bold text-xl flex items-center gap-2">🏨 入住機場東橫INN / AEON</h5><p class="text-gray-500 mt-2">最後一晚。可在對岸 AEON Mall 常滑店進行最後藥妝採補。</p></div>
+                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">20:00</span><h5 class="font-bold text-xl flex items-center gap-2">🏨 入住機場東橫INN</h5><p class="text-gray-500 mt-2">確保明天 13:45 班機完全不用趕路。</p></div>
                     </div>
                 </div>
 
-                <!-- Day 5: Return -->
+                <!-- Day 5: Saturday -->
                 <div id="day-4" class="day-content">
                     <div class="mb-10">
-                        <span class="emoji-badge">📦 滿載而歸</span>
-                        <h3 class="text-3xl font-bold text-gray-800 mt-3">漫遊機場 ➔ IT207 返台 ✈️</h3>
-                        <p class="text-gray-500 mt-2 text-lg">把握最後採購機會。中部機場被譽為最好逛的日本機場之一。</p>
+                        <span class="emoji-badge">🛫 滿載而歸</span>
+                        <h3 class="text-3xl font-bold text-gray-800 mt-3">機場漫遊 ➔ 回家 ✈️</h3>
+                        <p class="text-gray-500 mt-2 text-lg">6/20 (六) | 慵懶早晨，在機場享受最後的日本假期時光。</p>
                     </div>
                     <div class="relative timeline-line ml-4 space-y-12">
                         <div class="relative pl-12"><div class="absolute left-[-2px] top-1 w-5 h-5 rounded-full bg-[#8b0000] border-4 border-white shadow-md"></div>
-                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">09:30</span><h5 class="font-bold text-xl flex items-center gap-2">⛽ 機場還車與結算</h5><p class="text-gray-500 mt-2">加滿油後於機場租車點還車。步行進入航廈。</p></div>
+                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">09:30</span><h5 class="font-bold text-xl flex items-center gap-2">⛽ 還車與結帳</h5><p class="text-gray-500 mt-2">完成還車。步行至航廈內逛逛藍天城購物區。</p></div>
                         <div class="relative pl-12"><div class="absolute left-[-2px] top-1 w-5 h-5 rounded-full bg-[#8b0000] border-4 border-white shadow-md"></div>
-                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">11:00</span><h5 class="font-bold text-xl flex items-center gap-2">🛫 機場最後巡禮 (藍天城)</h5><p class="text-gray-500 mt-2">參訪 Flight of Dreams 展示區或在展望台看飛機起降。</p></div>
-                        <div class="relative pl-12"><div class="absolute left-[-2px] top-1 w-5 h-5 rounded-full bg-[#8b0000] border-4 border-white shadow-md"></div>
-                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">13:45</span><h5 class="font-bold text-xl flex items-center gap-2">✈️ IT207 起飛回台</h5><p class="text-gray-500 mt-2">帶著滿滿的三重縣回憶平安返家。</p></div>
+                            <span class="font-bold text-[#8b0000] text-sm tracking-widest">13:45</span><h5 class="font-bold text-xl flex items-center gap-2">✈️ IT207 起飛歸國</h5><p class="text-gray-500 mt-2">預計傍晚抵達，結束愉快的三重自駕之旅。</p></div>
                     </div>
                 </div>
             </div>
@@ -178,14 +174,14 @@
 
         <!-- Charts Analysis -->
         <section id="charts" class="scroll-mt-28">
-            <h2 class="text-3xl font-bold mb-8 flex items-center gap-2">負荷分析 📊</h2>
+            <h2 class="text-3xl font-bold mb-8 flex items-center gap-2">行程分析 📊</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
-                    <p class="font-bold text-gray-700 mb-6 flex items-center gap-2">📏 每日預估里程 (km)</p>
+                    <p class="font-bold text-gray-700 mb-6 flex items-center gap-2">📏 里程負擔 (km)</p>
                     <div class="chart-container"><canvas id="distChart"></canvas></div>
                 </div>
                 <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
-                    <p class="font-bold text-gray-700 mb-6 flex items-center gap-2">⏳ 體力分配比重</p>
+                    <p class="font-bold text-gray-700 mb-6 flex items-center gap-2">🕒 行程類型佔比</p>
                     <div class="chart-container"><canvas id="typeChart"></canvas></div>
                 </div>
             </div>
@@ -193,101 +189,79 @@
 
         <!-- Hotels Summary -->
         <section id="hotels" class="scroll-mt-28 pb-24">
-            <h2 class="text-3xl font-bold mb-8 flex items-center gap-2">住宿建議 🏨</h2>
+            <h2 class="text-3xl font-bold mb-8">住宿明細 🏨</h2>
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 hover:border-[#8b0000]/30 transition shadow-sm">
-                    <div class="flex items-center gap-2 text-blue-600 font-bold mb-3"><span>D1-D2</span> <span class="bg-blue-50 px-2 py-1 rounded text-[10px] uppercase">Base</span></div>
-                    <h5 class="font-bold text-lg mb-2">四日市東橫INN</h5>
-                    <p class="text-sm text-gray-500">位於核心地帶。自駕移動至愛知及南三重最穩定的中繼站。</p>
+                <div class="p-6 bg-white border rounded-2xl shadow-sm">
+                    <span class="text-xs text-blue-500 font-bold">D1-D2 (二/三)</span>
+                    <h5 class="font-bold text-lg mt-1">四日市東橫INN</h5>
+                    <p class="text-xs text-gray-500 mt-2 leading-relaxed">作為前往愛知與南三重的中心點，方便平日自駕移動。</p>
                 </div>
-                <div class="bg-[#8b0000]/5 p-6 rounded-2xl border border-[#8b0000]/20 shadow-sm">
-                    <div class="flex items-center gap-2 text-[#8b0000] font-bold mb-3"><span>D3</span> <span class="bg-[#8b0000]/10 px-2 py-1 rounded text-[10px] uppercase">Premium</span></div>
-                    <h5 class="font-bold text-lg mb-2">鳥羽海景溫泉飯店</h5>
-                    <p class="text-sm text-gray-600">犒賞行程。對著伊勢灣泡湯，享受在地海鮮大餐。</p>
+                <div class="p-6 bg-[#8b0000]/5 border border-[#8b0000]/20 rounded-2xl shadow-sm">
+                    <span class="text-xs text-[#8b0000] font-bold">D3 (四) 特別推薦</span>
+                    <h5 class="font-bold text-lg mt-1">鳥羽溫泉飯店</h5>
+                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">整趟旅程的享受高峰，在週四入住可以享有更精緻的服務。</p>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 hover:border-[#8b0000]/30 transition shadow-sm">
-                    <div class="flex items-center gap-2 text-gray-500 font-bold mb-3"><span>D4</span> <span class="bg-gray-50 px-2 py-1 rounded text-[10px] uppercase">Airport</span></div>
-                    <h5 class="font-bold text-lg mb-2">機場東橫INN</h5>
-                    <p class="text-sm text-gray-500">自駕者的最愛。最後一晚入住機場島，還車、採購、搭機全搞定。</p>
+                <div class="p-6 bg-white border rounded-2xl shadow-sm">
+                    <span class="text-xs text-gray-400 font-bold">D4 (五)</span>
+                    <h5 class="font-bold text-lg mt-1">機場島東橫INN</h5>
+                    <p class="text-xs text-gray-500 mt-2 leading-relaxed">避開週末回程大塞車的最佳選擇，還車與大採購的首選地。</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-[#8b0000] text-white/50 py-16 text-center text-sm">
-        <div class="max-w-5xl mx-auto px-6">
-            <p class="mb-2 text-white/80 font-bold uppercase tracking-widest">Mie Prefecture Road Trip</p>
-            <p>IT206 & IT207 | 6/16 - 6/20 | 鈴鹿賽道 6/19 更新版</p>
-        </div>
+    <footer class="bg-[#8b0000] text-white/50 py-12 text-center text-sm">
+        <p>三重縣五天四夜自駕遊行程規劃 (更新版) | 鈴鹿賽道 @ 6/19</p>
+        <p class="mt-2 text-xs">2026/06/16 (Tue) - 2026/06/20 (Sat)</p>
     </footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         function switchDay(index) {
-            // Update Tab Buttons
             document.querySelectorAll('.tab-btn').forEach((btn, i) => {
                 if(i === index) btn.classList.add('active');
                 else btn.classList.remove('active');
             });
-            // Update Contents
             document.querySelectorAll('.day-content').forEach((content, i) => {
                 if(i === index) content.classList.add('active');
                 else content.classList.remove('active');
             });
-            // Update Background number
             document.getElementById('bg-day-num').innerText = 'D' + (index + 1);
         }
 
         function initCharts() {
             try {
-                // Mileage Chart
                 const distCtx = document.getElementById('distChart').getContext('2d');
                 new Chart(distCtx, {
                     type: 'bar',
                     data: {
                         labels: ['D1', 'D2', 'D3', 'D4', 'D5'],
                         datasets: [{
-                            label: '預估公里數',
+                            label: 'km',
                             data: [110, 80, 45, 120, 5],
                             backgroundColor: '#8b0000',
-                            borderRadius: 10,
-                            borderSkipped: false
+                            borderRadius: 8
                         }]
                     },
-                    options: { 
-                        responsive: true, 
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: { y: { beginAtZero: true, grid: { display: false } }, x: { grid: { display: false } } }
-                    }
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
                 });
 
-                // Activity Split Chart
                 const typeCtx = document.getElementById('typeChart').getContext('2d');
                 new Chart(typeCtx, {
                     type: 'doughnut',
                     data: {
-                        labels: ['文化參拜', '賽車活動', '海洋生態', '放鬆溫泉'],
+                        labels: ['神宮文化', '賽道熱血', '海洋生態', '溫泉美食'],
                         datasets: [{
-                            data: [30, 30, 20, 20],
-                            backgroundColor: ['#4a90e2', '#8b0000', '#f5a623', '#27ae60'],
-                            hoverOffset: 10,
-                            borderWidth: 5,
-                            borderColor: '#ffffff'
+                            data: [25, 30, 25, 20],
+                            backgroundColor: ['#4a90e2', '#8b0000', '#f5a623', '#27ae60']
                         }]
                     },
-                    options: { 
-                        responsive: true, 
-                        maintainAspectRatio: false, 
-                        cutout: '75%', 
-                        plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20 } } }
-                    }
+                    options: { responsive: true, maintainAspectRatio: false, cutout: '75%', plugins: { legend: { position: 'bottom' } } }
                 });
-            } catch(e) { console.error("Charts could not load", e); }
+            } catch(e) { console.error(e); }
         }
 
-        // Run On Window Ready
         window.onload = initCharts;
     </script>
 </body>
